@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Generador gratis de enlace y QR para reseñas en Google | Ramilink</title>
+<meta name="description" content="Crea gratis el enlace directo y el código QR para que tus clientes te dejen una reseña en Google. Sin registro y sin enviar datos: todo se calcula en tu navegador. Herramienta de Ramilink.">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Generador gratis de enlace y QR para reseñas en Google">
+<meta property="og:description" content="Pega tu Place ID o tu enlace de «Pedir reseñas» y obtén el enlace directo y un QR para imprimir. Gratis, sin registro. De Ramilink.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sergiopotente.github.io/generador-resenas-google/">
+<link rel="canonical" href="https://sergiopotente.github.io/generador-resenas-google/">
+<script type="module" src="app.mjs"></script>
+</head>
+<body>
+<main>
+	<header class="top"><a href="https://www.ramilink.es/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google"><img src="icon.png" alt="" width="32" height="32"> Ramilink</a></header>
+
+	<h1>Generador gratis de enlace y QR para pedir reseñas en Google</h1>
+	<p class="lead">Pega el Place ID de tu negocio (o el enlace para pedir reseñas que te da Google) y obtén al momento el enlace directo al formulario de reseñas y un código QR para imprimir. Es gratis, sin registro, y todo se calcula en tu navegador: no se guarda ni se envía nada.</p>
+
+	<section class="tool" aria-labelledby="t">
+		<h2 id="t" class="tool-title">Crea tu enlace y tu QR</h2>
+		<form id="form" novalidate>
+			<label for="entrada">Place ID o enlace de «Pedir reseñas» de Google</label>
+			<div class="row">
+				<input id="entrada" name="entrada" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="ChIJ… o https://g.page/r/…/review" aria-describedby="error">
+				<button type="submit" class="primary">Generar</button>
+			</div>
+			<p id="error" class="error" role="alert"></p>
+		</form>
+		<div id="result" class="result" aria-live="polite" hidden>
+			<img id="qr" alt="Código QR que abre el formulario de reseñas de Google de tu negocio" width="200" height="200">
+			<div>
+				<p class="label">Tu enlace de reseñas</p>
+				<p id="url" class="url"></p>
+				<div class="actions">
+					<button type="button" id="copiar" class="secondary">Copiar enlace</button>
+					<a id="probar" class="btn secondary" href="#" target="_blank" rel="noopener noreferrer">Probar</a>
+					<button type="button" id="png" class="secondary">Descargar PNG</button>
+					<button type="button" id="svg" class="secondary">Descargar SVG</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<h2>Cómo encontrar tu Place ID o tu enlace de reseñas</h2>
+	<ol>
+		<li><strong>Desde tu Perfil de Empresa en Google</strong>: busca tu negocio en Google con la cuenta que lo gestiona, pulsa «Pedir reseñas» y copia el enlace. Pégalo arriba tal cual.</li>
+		<li><strong>Con el buscador de Place ID de Google</strong>: abre el <a href="https://developers.google.com/maps/documentation/places/web-service/place-id" rel="noopener">Place ID Finder</a>, escribe el nombre de tu negocio y copia el código que empieza por «ChIJ».</li>
+	</ol>
+
+	<h2>Dónde poner el QR</h2>
+	<ul>
+		<li>Junto a la caja, a la altura de los ojos, donde el cliente espera mientras pagas.</li>
+		<li>En la cuenta, el ticket o la tarjeta de visita.</li>
+		<li>En el email o el mensaje de después de la visita.</li>
+	</ul>
+	<p class="note">Pídela a todos tus clientes y sin dar nada a cambio: Google prohíbe ofrecer incentivos por publicar, cambiar o borrar reseñas (<a href="https://support.google.com/business/answer/3474122?hl=es" rel="noopener">Ayuda de Perfil de Empresa</a>). Guía completa: <a href="https://www.ramilink.es/blog/como-conseguir-mas-resenas-en-google?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">cómo conseguir más reseñas en Google sin saltarte las normas</a>.</p>
+
+	<h2>Preguntas frecuentes</h2>
+	<p><strong>¿Qué es el Place ID de Google?</strong> Es el identificador único de tu negocio en Google Maps (suele empezar por «ChIJ»). Con él se forma el enlace directo al formulario de reseñas.</p>
+	<p><strong>¿El enlace caduca?</strong> No, mientras tu ficha de Google exista. Si cambias de ficha, genera uno nuevo.</p>
+	<p><strong>¿Se guarda mi Place ID?</strong> No. Esta página no tiene servidor, ni analítica, ni cookies: el enlace y el QR se crean en tu navegador. Puedes revisar el código en este mismo repositorio.</p>
+	<p><strong>¿Puedo grabar el enlace en una placa NFC?</strong> Sí: el enlace sirve para cualquier etiqueta NFC.</p>
+
+	<section class="cta">
+		<p>Un QR consigue reseñas, pero no sabe quién es tu cliente. Con Mozo de Ramilink, el soporte NFC de tu mostrador, el mismo toque abre la reseña, suma un sello en tu tarjeta de sellos, le da su ticket digital y te deja su contacto (con su permiso). Al día siguiente, Ramilink le pide la reseña por email, igual a todos.</p>
+		<a class="btn primary" href="https://www.ramilink.es/resenas-google?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">Ver cómo funciona Ramilink</a>
+	</section>
+
+	<footer>
+		<p>Herramienta gratuita de <a href="https://www.ramilink.es/?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">Ramilink</a>. También disponible en <a href="https://www.ramilink.es/herramientas/enlace-resenas-google?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">ramilink.es/herramientas/enlace-resenas-google</a>. Más recursos: <a href="https://www.ramilink.es/recursos?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">guías y comparativas</a> · <a href="https://www.ramilink.es/precios?utm_source=github&amp;utm_medium=referral&amp;utm_campaign=generador-resenas-google">precios</a>.</p>
+		<p>Código abierto con licencia MIT. Generación de QR con <a href="https://github.com/unjs/uqr" rel="noopener">uqr</a> (MIT). Google y Google Maps son marcas de Google LLC; esta herramienta no está afiliada a Google.</p>
+	</footer>
+</main>
+</body>
+</html>
